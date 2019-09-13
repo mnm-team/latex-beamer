@@ -1,0 +1,102 @@
+\mode<presentation>
+
+% Length definitions as given in the LMU Corporate Design Manual
+%\newlength{\m} % Multiplicator corresponding to aspect ratio
+%\typeout{Paperwidth: \the\paperwidth}
+%\setlength{\m}{\dimexpr(\paperwidth/254.0pt)\relax}
+%\newlength{\x} % Distance of Box from Edge
+%\setlength{\x}{\m*7mm}
+%\newlength{\a} % Height of Box
+%\setlength{\a}{\m*18.4mm}
+%\newlength{\b} % Seperation of Boxes
+%\setlength{\b}{\m*2mm}
+%\newlength{\h} % Height of Header
+%\setlength{\h}{\m*29mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Background %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{background}{
+	\begin{tikzpicture}
+		\useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
+		\fill[color=lmu@background1] (0,\the\paperheight-17mm) rectangle (\the\paperwidth,\the\paperheight);
+		%\fill[color=lmu@background]  (0,5mm) rectangle (\the\paperwidth,\the\paperheight-17mm);
+		\node[anchor=south west,inner sep=0] at (2mm,\the\paperheight-15mm) { \includegraphics[height=13mm]{logo.pdf} };
+		\ifnum\thepage>1\relax%
+			\draw[color=lmu@hyperlink] (31.2mm,\the\paperheight-15mm)
+            rectangle (\the\paperwidth-50mm,\the\paperheight-2mm);
+			\node[anchor=south east,inner sep=0,draw,color=lmu@hyperlink] at
+			(\the\paperwidth-2mm,\the\paperheight-15mm) {
+				%\hspace{10mm}%
+                \includegraphics{mnmLogoNeu.pdf}%
+				\hspace{2mm}%
+                \includegraphics[trim={0 12mm 24mm 12mm}, clip, height=13mm]{siegel.pdf}};
+		\else%
+			\node[anchor=south east,inner sep=0] at (\the\paperwidth+12mm,-5mm) { \includegraphics[height=55mm]{siegel.pdf} };
+		\fi
+	\end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Part Pages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\defbeamertemplate*{title page}{lmu}[1][]{
+	\vskip5mm%
+	\begin{beamercolorbox}[wd=\paperwidth,leftskip=20mm,#1]{title}
+		\usebeamerfont{title}\inserttitle\par%
+	\end{beamercolorbox}%
+	\vskip5mm%
+	\begin{beamercolorbox}[wd=\paperwidth,leftskip=20mm,#1]{subtitle}
+		\usebeamerfont{subtitle}\insertsubtitle\par%
+	\end{beamercolorbox}
+	\vskip10mm%
+	\begin{beamercolorbox}[wd=\paperwidth,leftskip=20mm,#1]{author}
+		\usebeamerfont{author}\insertauthor\par%
+	\end{beamercolorbox}
+	\vskip5mm%
+	\begin{beamercolorbox}[wd=\paperwidth,leftskip=20mm]{institute}
+		\usebeamerfont{institute}\insertinstitute\par%
+	\end{beamercolorbox}
+	\vskip5mm%
+	\begin{beamercolorbox}[wd=\paperwidth,leftskip=20mm]{date}
+		\usebeamerfont{date}\insertdate\par
+	\end{beamercolorbox}
+	\vfill%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table Of Contents %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\setbeamertemplate{sections/subsections in toc}[ball]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Navigation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\setbeamersize{mini frame size=1ex}
+%\setbeamersize{mini frame offset=-.1ex}
+
+\setbeamertemplate{navigation symbols}{
+	%    \ifnum\thepage>1\relax%
+	%        \insertslidenavigationsymbol%
+	%        \insertframenavigationsymbol%
+	%        \insertsubsectionnavigationsymbol%
+	%        \insertsectionnavigationsymbol%
+	%    \fi
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%% Itemize & Enumerate Environments %%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{itemize items}[circle]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Description Environment %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Block Environment %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{blocks}[default]
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Theorem & Proof Environment %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Figures & Tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Footnotes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography Entries %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mode<all>
