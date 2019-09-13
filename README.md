@@ -9,7 +9,7 @@ Usage
 
 Copy the project files into your presentation's directory:
 
-    git clone https://gitlab.physik.uni-muenchen.de/LDAP_cipwheel/lmu-beamer-theme.git
+    git clone https://github.com/mnm-team/latex-beamer.git
 
 In your presentation, use the *beamer* document class and tell it to use the LMU
 theme:
