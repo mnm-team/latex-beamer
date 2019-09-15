@@ -22,6 +22,7 @@
 		%\fill[color=lmu@background]  (0,5mm) rectangle (\the\paperwidth,\the\paperheight-17mm);
 		\node[anchor=south west,inner sep=0] at (2mm,\the\paperheight-15mm) { \includegraphics[height=13mm]{logo.pdf} };
 		\ifnum\thepage>1\relax%
+            % rectangle for title
 			\draw[color=lmu@hyperlink] (31.2mm,\the\paperheight-15mm)
             rectangle (\the\paperwidth-50mm,\the\paperheight-2mm);
 			\node[anchor=south east,inner sep=0,draw,color=lmu@hyperlink] at
@@ -31,6 +32,11 @@
 				\hspace{2mm}%
                 \includegraphics[trim={0 12mm 24mm 12mm}, clip, height=13mm]{siegel.pdf}};
 		\else%
+			\node[anchor=south east,inner sep=0,draw,color=lmu@hyperlink] at
+			(\the\paperwidth-2mm,\the\paperheight-15mm) {
+				%\hspace{10mm}%
+                \includegraphics{mnmLogoNeu.pdf}%
+            };
 			\node[anchor=south east,inner sep=0] at (\the\paperwidth+12mm,-5mm) { \includegraphics[height=55mm]{siegel.pdf} };
 		\fi
 	\end{tikzpicture}
