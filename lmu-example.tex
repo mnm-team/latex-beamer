@@ -7,6 +7,16 @@
 
 \setbeamertemplate{bibliography item}{\insertbiblabel}
 
+% use LMU theme
+\usetheme{LMU}
+
+% setup sectionpage
+\AtBeginSection{
+    \begin{frame}[allowframebreaks]{Outline}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
 % setup listings
 \lstset{
     basicstyle=\ttfamily\color{black},
@@ -34,45 +44,38 @@
     moredelim=**[il][\only<+>{\color{black}\lstset{style=highlight}}]{@}
 }
 
-% use LMU theme
-\usetheme{LMU}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                  Title Page Data                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% set up the title page
+% helper command to add multiple authors
 \newcommand{\newauthor}[2]{
-  \parbox{0.26\textwidth}{
-    \texorpdfstring
-      {
-        %\centering
-        #1 \\
-        {\scriptsize{\urlstyle{same}\url{#2}\urlstyle{tt}}}
+  \parbox[c]{0.26\textwidth}{
+        {\bfseries #1} \\
+        {\scriptsize{\href{mailto:#2}{#2}}}
       }
-      {#1}
+      %{#1}
   }
-}
-%\author[Kowalewski]
-%       {\parbox[t]{1.5in}{{\bfseries Roger Kowalewski} \\{\scriptsize
-%                   \texttt{kowalewski@nm.ifi.lmu.de}}} \and
-%        \parbox[t]{1.5in}{Pascal Jungblut \\ {\scriptsize
-%                \texttt{jungblut@nm.ifi.lmu.de}}} \and%
-%        \parbox[t]{1.5in}{Karl Fuerlinger \\ {\scriptsize
-%                \texttt{fuerling@nm.ifi.lmu.de}}}%
-%    }
-\author[shortname]{Max Mustermann}
+
+% Multiple Authors
+% If you have multiple authors simply use this command and adjust the width in
+% style/beamerinnertheme where the authors are rendered
+%\author[Kowalewski]{
+%    \newauthor{Roger Kowalewski}{kowalewski@nm.ifi.lmu.de} \and
+%    \newauthor{Pascal Jungblut}{jungblut@nm.ifi.lmu.de} \and
+%    \newauthor{Karl Fürlinger}{fuerling@nm.ifi.lmu.de}
+%}
+
+% Single Author
+\author[Mustermann]{Max Mustermann}
 
 \institute[LMU]{LMU München, MNM Team\\\texttt{http://www.nm.ifi.lmu.de/}}
 
 \date[\today]{\today}
 
-
 \title{Title}
 \subtitle{Subtitle}
 
-% setup sectionpage
-\AtBeginSection{
-    \begin{frame}[allowframebreaks]{Outline}
-        \tableofcontents[currentsection]
-    \end{frame}
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                  Document                                  %%
