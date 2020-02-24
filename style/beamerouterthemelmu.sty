@@ -4,18 +4,15 @@
 
 \defbeamertemplate*{headline}{lmu theme}{
     %\leavemode%
-    \begin{beamercolorbox}[wd=\paperwidth,ht=17mm,sep=1.5mm,%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=17mm,sep=3mm,%
         %leftskip=26mm
-        leftskip=31.5mm,
+        leftskip=30mm%
         ]{section in head/foot}
     %\begin{beamercolorbox}[wd=\paperwidth,ht=17mm,sep=3mm,leftskip=29mm]{section in head/foot}
         \ifnum\thepage>1\relax%
-            \strut
             %\usebeamerfont{section in head/foot}\insertnavigation{.4\paperwidth}
             \usebeamerfont{section in head/foot}\insertsection
             %\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
-            \strut
-
         \fi
     \end{beamercolorbox}
 }
