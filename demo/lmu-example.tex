@@ -1,0 +1,288 @@
+\documentclass[fleqn,compress,utf8,aspectratio=169,t]{beamer}
+% use LMU theme
+\usetheme{LMU}
+
+% Configuration of listings and common packages
+\input{preamble/config}
+
+
+\usepackage[style=ieee]{biblatex}
+\addbibresource{lmu-example.bib}
+
+% setup sectionpage if you want one
+\AtBeginSection{
+    \begin{frame}[allowframebreaks,noframenumbering]{Outline}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                  Title Page Data                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% helper command to add multiple authors
+\newcommand{\newauthor}[2]{
+  \parbox[c]{0.26\textwidth}{
+        {\bfseries #1} \\
+        {\scriptsize{\href{mailto:#2}{#2}}}
+      }
+      %{#1}
+  }
+
+% Authors
+\author[Mustermann]{
+    \newauthor{Max Mustermann\inst{1}}{mustermann@nm.ifi.lmu.de} \and
+    \newauthor{Karl Wombat\inst{2}}{wombat@tum.de}
+}
+
+\institute[LMU]{
+    \inst{1}%
+    {MNM-Team, LMU München}
+    \inst{2}%
+    {TUM}
+}
+
+\date[\today]{\today}
+
+\title{Title}
+\subtitle{Subtitle}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                  Document                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frame}
+ \titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Overview %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Overview}
+
+\subsection{Motivation}
+
+\begin{frame}{Motivation}
+ \begin{itemize}
+  \item The LMU provides students, professors and other staff with
+        \begin{itemize}
+         \item Corporate Design Manual~\cite{lmu2006}
+         \item Web-Styleguide~\cite{lmu2007}
+         \item templates for MS Office\footnote{Although we really
+                dislike MS Products.}
+        \end{itemize}
+        \pause
+  \item The IT-Service for Physics provides some \LaTeX\ templates such as beamer
+        theme~\cite{lmu2014}.
+
+  \item The MNM Team again modernized this and changed the ratio to 16:9
+ \end{itemize}
+\end{frame}
+
+\subsection{Usage}
+
+\begin{frame}{Usage}
+ \begin{itemize}
+  \item<1-> install the style-files in your project-directory
+        \begin{itemize}
+         \item beamerthemeLMU.sty
+         \item beamerinnerthemelmu.sty
+         \item beamerouterthemelmu.sty
+         \item beamercolorthemelmu.sty
+         \item beamerfontthemelmu.sty
+        \end{itemize}
+  \item<2-> compile twice with pdflatex
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Usage}
+ \begin{block}{Code}
+  \begin{lstlisting}[style=basetex]
+\documentclass[
+    @compress,    % compresses navigation bar
+]{beamer}
+
+@\usetheme{LMU}   % enable LMU theme
+\end{lstlisting}
+ \end{block}
+ \begin{itemize}
+  \item<1-> navigation bar has to be compressed explicitly
+  \item<2-> no options to \lstinline$\usetheme$ implemented yet
+  \item<3-> any customization has to happen in the theme's code
+ \end{itemize}
+\end{frame}
+
+\subsection{Documentation}
+
+\begin{frame}{Documentation}
+ At this time:
+ \begin{itemize}
+  \item<1-> no final documentation available
+  \item<2-> documentation mostly as source code
+  \item<3-> this very presentation serves as showcase
+        %\item<4-> project page on our GitLab server \cite{Wan}
+ \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Examples %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Examples}
+
+\subsection{Lists}
+
+\begin{frame}{Lists}
+ \begin{columns}[t]
+  \column{.5\textwidth}
+  \begin{itemize}
+   \item This is a list
+   \item using the
+   \item itemize environment.
+  \end{itemize}
+  \column{.5\textwidth}
+  \begin{enumerate}
+   \item This is a list
+   \item using the
+   \item enumerate environment.
+  \end{enumerate}
+ \end{columns}
+\end{frame}
+
+\subsection{Formulas}
+
+\begin{frame}{Formulas}
+ Four formulas --- One Idea
+ \begin{align}
+  \int^{b}_{a} f'(x) \, dx                                 & = f(b) - f(a) \\
+  \int^b_{a} \nabla f\,d\mathbf{l}                         & = f(b) - f(a) \\
+  \int_{\mathcal{V}} \nabla\mathbf{f} \, dv                & =
+  \oint_{\mathcal{S}} \mathbf{f} \, d\mathbf{a}                            \\
+  \int_{\mathcal{S}} \nabla\times\mathbf{f} \, d\mathbf{a} & =
+  \oint_{\mathcal{P}} \mathbf{f} \, d\mathbf{l}
+ \end{align}
+\end{frame}
+
+\subsection{Blocks}
+
+\begin{frame}{Blocks}
+ \begin{columns}[t]
+  \column{.5\textwidth}
+  \begin{block}{Regular Block}
+   Theorems, proofs and definitions will look the same.
+  \end{block}
+  \begin{theorem}
+   Told you.
+  \end{theorem}
+  \begin{proof}
+   See above.
+  \end{proof}
+  \column{.5\textwidth}
+  \begin{definition}
+   This is a definition.
+  \end{definition}
+  \begin{example}
+   This is an example of an example.
+  \end{example}
+  \begin{alertblock}{Alert Block}
+   Nothing to be \alert{alerted} about.
+  \end{alertblock}
+ \end{columns}
+\end{frame}
+
+\subsection{Figures}
+
+\begin{frame}{Figures}
+ Figures drawn with TikZ can be uncovered part by part:
+ \begin{columns}[t]
+  \column{.5\textwidth}
+  \begin{itemize}
+   \item<2-> Das
+   \item<3-> ist
+   \item<4-> das
+   \item<5-> Haus
+   \item<6-> vom
+   \item<7-> Ni
+   \item<8-> ko
+   \item<9-> laus
+  \end{itemize}
+  \column{.5\textwidth}
+  \begin{figure}
+   \begin{tikzpicture}
+    \useasboundingbox (-0.5,-.5) rectangle (3.5,4);
+    \color{white}
+    \fill (-0.5,-.5) rectangle (3.5,4);
+    \color{red!75!black}
+    \draw<2-> (0,0)     -- (0,2);
+    \draw<3-> (0,2)     -- (1.5,3.5);
+    \draw<4-> (1.5,3.5) -- (3,2);
+    \draw<5-> (3,2)     -- (3,0);
+    \draw<6-> (3,0)     -- (0,2);
+    \draw<7-> (0,2)     -- (3,2);
+    \draw<8-> (3,2)     -- (0,0);
+    \draw<9-> (0,0)     -- (3,0);
+   \end{tikzpicture}
+  \end{figure}
+ \end{columns}
+\end{frame}
+
+\subsection{Source Code}
+
+\begin{frame}[fragile]{Source Code}
+ Source Code may be highlighted part by part:
+ \begin{block}{Code}
+  \begin{lstlisting}[style=basec]
+#include <sdtio.h>
+@int main (void) {
+@   printf("Hello World!\n");
+@   return 0;
+}
+\end{lstlisting}
+ \end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Closing %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Closing}
+
+\subsection{Outlook}
+
+\begin{frame}{Outlook}
+ The LMU Beamer Theme already provides you with a beautifully typeset template
+ that follows the LMU corporate design. The following things are still missing:
+ \begin{itemize}
+  \item<2-> Incorporation of the LMU Fonts
+  \item<3-> Customizability with Theme-Options
+  \item<4-> More elaborate Color Theme
+  \item<5-> Powerpoint-compatible Theme
+  \item<6-> Portability to Article-Mode
+  \item<7-> Packaging for Distributions
+ \end{itemize}
+
+\end{frame}
+
+\subsection{Development}
+
+\begin{frame}{Development}
+ \begin{itemize}
+  \item<1-> theme is still under development
+  \item<2-> there are missing features
+  \item<3-> there may be bugs
+ \end{itemize}
+ \uncover<4->{
+  \begin{alertblock}{Caution}
+   The LMU beamer theme is considered alpha!
+  \end{alertblock}
+ }
+\end{frame}
+
+\subsection{References}
+\begin{frame}[allowframebreaks]
+ \frametitle{References}
+ \nocite{*}
+ \printbibliography[heading=none]
+\end{frame}
+
+\end{document}
