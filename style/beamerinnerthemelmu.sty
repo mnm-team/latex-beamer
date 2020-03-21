@@ -8,7 +8,7 @@
 %\setlength{\x}{\m*7mm}
 %\newlength{\a} % Height of Box
 %\setlength{\a}{\m*18.4mm}
-%\newlength{\b} % Seperation of Boxes
+%\newlength{\b} % Separation of Boxes
 %\setlength{\b}{\m*2mm}
 %\newlength{\h} % Height of Header
 %\setlength{\h}{\m*29mm}
@@ -16,90 +16,90 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Background %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamertemplate{background}{
- \begin{tikzpicture}[line width=0.1mm]
-  \useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
-  \fill[color=lmu@background1] (0,\the\paperheight-17mm) rectangle (\the\paperwidth,\the\paperheight);
-  \node[anchor=south west,inner sep=0] at (2mm,\the\paperheight-15mm) {
-   \includegraphics[height=13mm]{lmulogo} };
-  \ifnum\thepage>1\relax%
-   % rectangle for title
-   \draw[color=lmu@lightgray] (31.2mm,\the\paperheight-15mm)
-   rectangle (\the\paperwidth-40mm,\the\paperheight-2mm);
-   \node[anchor=south east,inner sep=0,draw,color=lmu@lightgray,
-    minimum width=0.25\textwidth, align=left] at
-   (\the\paperwidth-2mm,\the\paperheight-15mm) {
-    \includegraphics[width=0.2\textwidth, height=13mm]{mnmlogo}%
-   };
-   \node[anchor=south east,inner sep=0] at
-   (\the\paperwidth-2mm,\the\paperheight-20mm) {
-    \includegraphics[height=13mm]{siegel}%
-   };
-  \else%
-   \node[anchor=south east,inner sep=0,draw,color=lmu@lightgray, minimum width=0.25\textwidth] at
-   (\the\paperwidth-2mm,\the\paperheight-15mm) {
-    \includegraphics[width=0.2\textwidth, height=13mm]{mnmlogo}%
-   };
-  \fi
- \end{tikzpicture}
+  \begin{tikzpicture}[line width=0.1mm]
+    \useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
+    \fill[color=lmu@background1] (0,\the\paperheight-17mm) rectangle (\the\paperwidth,\the\paperheight);
+    \node[anchor=south west,inner sep=0] at (2mm,\the\paperheight-15mm) {
+      \includegraphics[height=13mm]{lmulogo} };
+    \ifnum\thepage>1\relax%
+      % rectangle for title
+      \draw[color=lmu@lightgray] (31.2mm,\the\paperheight-15mm)
+      rectangle (\the\paperwidth-40mm,\the\paperheight-2mm);
+      \node[anchor=south east,inner sep=0,draw,color=lmu@lightgray,
+        minimum width=0.25\textwidth, align=left] at
+      (\the\paperwidth-2mm,\the\paperheight-15mm) {
+        \includegraphics[width=0.2\textwidth, height=13mm]{mnmlogo}%
+      };
+      \node[anchor=south east,inner sep=0] at
+      (\the\paperwidth-2mm,\the\paperheight-20mm) {
+        \includegraphics[height=13mm]{siegel}%
+      };
+    \else%
+      \node[anchor=south east,inner sep=0,draw,color=lmu@lightgray, minimum width=0.25\textwidth] at
+      (\the\paperwidth-2mm,\the\paperheight-15mm) {
+        \includegraphics[width=0.2\textwidth, height=13mm]{mnmlogo}%
+      };
+    \fi
+  \end{tikzpicture}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Part Pages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pgfdeclareimage[height=.5\paperheight]{lmu-siegel-large}{siegel}
 \setbeamertemplate{title page}{%
- \setlength{\unitlength}{\paperwidth}
- \begin{picture}(0,0)%
-  \put(0.70,-0.45){%
-   \pgfuseimage{lmu-siegel-large}%
-  }%
-  \put(0,-0.45){%
-   \begin{minipage}[b][0.95\paperheight]{\textwidth}
-    \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
-    \vfill%
-    \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
-    \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
-    %\usebeamertemplate*{title separator}
-    \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
-    \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
-    \vfill
-    \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
-    \vfill
-    \vspace*{1mm}
-   \end{minipage}
-  }%
- \end{picture}
+  \setlength{\unitlength}{\paperwidth}
+  \begin{picture}(0,0)%
+    \put(0.70,-0.45){%
+      \pgfuseimage{lmu-siegel-large}%
+    }%
+    \put(0,-0.45){%
+      \begin{minipage}[b][0.95\paperheight]{\textwidth}
+        \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
+        \vfill%
+        \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
+        \ifx\insertsubtitle\@empty\else\usebeamertemplate*{subtitle}\fi
+        %\usebeamertemplate*{title separator}
+        \ifx\beamer@shortauthor\@empty\else\usebeamertemplate*{author}\fi
+        \ifx\insertinstitute\@empty\else\usebeamertemplate*{institute}\fi
+        \vfill
+        \ifx\insertdate\@empty\else\usebeamertemplate*{date}\fi
+        \vfill
+        \vspace*{1mm}
+      \end{minipage}
+    }%
+  \end{picture}
 }
 
 \def\maketitle{%
- \ifbeamer@inframe
-  \titlepage
- \else
-  \frame[plain,noframenumbering]{\titlepage}
- \fi
+  \ifbeamer@inframe
+    \titlepage
+  \else
+    \frame[plain,noframenumbering]{\titlepage}
+  \fi
 }
 \def\titlepage{%
- \usebeamertemplate{title page}
+  \usebeamertemplate{title page}
 }
 
 \setbeamertemplate{title graphic}{
- \vbox to 0pt {
-   \vspace*{2em}
-   \inserttitlegraphic%
-  }%
- \nointerlineskip%
+  \vbox to 0pt {
+      \vspace*{2em}
+      \inserttitlegraphic%
+    }%
+  \nointerlineskip%
 }
 \setbeamertemplate{title}{
- \raggedright%
- \linespread{1.0}%
- \inserttitle%
- \par%
- \vspace*{0.5em}
+  \raggedright%
+  \linespread{1.0}%
+  \inserttitle%
+  \par%
+  \vspace*{0.5em}
 }
 \setbeamertemplate{subtitle}{
- \raggedright%
- \insertsubtitle%
- \par%
- \vspace*{0.5em}
+  \raggedright%
+  \insertsubtitle%
+  \par%
+  \vspace*{0.5em}
 }
 %\newlength{\lmu@titleseparator@linewidth}
 %\setlength{\lmu@titleseparator@linewidth}{0.4pt}
@@ -112,19 +112,19 @@
 %  \par%
 %}
 \setbeamertemplate{author}{
- \vspace*{2em}
- \insertauthor%
- \par%
- \vspace*{0.25em}
+  \vspace*{2em}
+  \insertauthor%
+  \par%
+  \vspace*{0.25em}
 }
 \setbeamertemplate{date}{
- \insertdate%
- \par%
+  \insertdate%
+  \par%
 }
 \setbeamertemplate{institute}{
- \vspace*{3mm}
- \insertinstitute%
- \par%
+  \vspace*{3mm}
+  \insertinstitute%
+  \par%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table Of Contents %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,12 +137,12 @@
 %\setbeamersize{mini frame offset=-.1ex}
 
 \setbeamertemplate{navigation symbols}{
- %    \ifnum\thepage>1\relax%
- %        \insertslidenavigationsymbol%
- %        \insertframenavigationsymbol%
- %        \insertsubsectionnavigationsymbol%
- %        \insertsectionnavigationsymbol%
- %    \fi
+  %    \ifnum\thepage>1\relax%
+  %        \insertslidenavigationsymbol%
+  %        \insertframenavigationsymbol%
+  %        \insertsubsectionnavigationsymbol%
+  %        \insertsectionnavigationsymbol%
+  %    \fi
 }
 
 %%%%%%%%%%%%%%%%%%%%%%% Itemize & Enumerate Environments %%%%%%%%%%%%%%%%%%%%%%%
@@ -159,7 +159,7 @@
 \setlength{\lmu@blocksep}{0.75ex}
 \setlength{\lmu@blockadjust}{0.25ex}
 \providecommand{\lmu@strut}{%
- \vphantom{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz()}%
+  \vphantom{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz()}%
 }
 \newcommand{\lmu@block}[1]{
 \par\vskip\medskipamount%
@@ -171,41 +171,49 @@
 }%
 {%
 \begin{beamercolorbox}[
-  sep=\dimexpr\lmu@blocksep-\lmu@blockadjust\relax,
-  leftskip=\lmu@blockadjust,
-  rightskip=\dimexpr\lmu@blockadjust plus 4em\relax
- ]{block title#1}%
- }}%
- \usebeamerfont*{block title#1}%
- \lmu@strut%
- \insertblocktitle%
- \lmu@strut%
+    sep=\dimexpr\lmu@blocksep-\lmu@blockadjust\relax,
+    leftskip=\lmu@blockadjust,
+    rightskip=\dimexpr\lmu@blockadjust plus 4em\relax
+  ]{block title#1}%
+  }}%
+  \usebeamerfont*{block title#1}%
+  \lmu@strut%
+  \insertblocktitle%
+  \lmu@strut%
 \end{beamercolorbox}%
 \nointerlineskip%
 \ifbeamercolorempty[bg]{block body#1}{%
- \begin{beamercolorbox}[vmode]{block body#1}}{
-  \ifbeamercolorempty[bg]{block body}{%
-   \begin{beamercolorbox}[vmode]{block body#1}%
-    }{%
-    \begin{beamercolorbox}[sep=\lmu@blocksep, vmode]{block body#1}%
-     \vspace{-\lmu@parskip}
-     }}%
-     \usebeamerfont{block body#1}%
-     \setlength{\parskip}{\lmu@parskip}%
-     }
-     \setbeamertemplate{block begin}{\lmu@block{}}
-     \setbeamertemplate{block alerted begin}{\lmu@block{ alerted}}
-     \setbeamertemplate{block example begin}{\lmu@block{ example}}
-     \setbeamertemplate{block end}{\end{beamercolorbox}\vspace*{0.2ex}}
-    \setbeamertemplate{block alerted end}{\end{beamercolorbox}\vspace*{0.2ex}}
-  \setbeamertemplate{block example end}{\end{beamercolorbox}\vspace*{0.2ex}}
+  \begin{beamercolorbox}[vmode]{block body#1}}
+    {
+    \ifbeamercolorempty[bg]{block body}{%
+      \begin{beamercolorbox}[vmode]{block body#1}%
+        }{%
+        \begin{beamercolorbox}[sep=\lmu@blocksep, vmode]{block body#1}%
+          \vspace{-\lmu@parskip}
+          }
+          }%
+          \usebeamerfont{block body#1}%
+          \setlength{\parskip}{\lmu@parskip}%
+          }
+          \setbeamertemplate{block begin}{\lmu@block{}}
+          \setbeamertemplate{block alerted begin}{\lmu@block{ alerted}}
+          \setbeamertemplate{block example begin}{\lmu@block{ example}}
+          \setbeamertemplate{block end}{\end{beamercolorbox}\vspace*{0.2ex}}
+
+        \setbeamertemplate{block alerted end}{\end{beamercolorbox}\vspace*{0.2ex}}
+    \setbeamertemplate{block example end}{\end{beamercolorbox}\vspace*{0.2ex}}
 
 \newlength{\lmu@parskip}
 \setlength{\lmu@parskip}{0.5em}
 \setlength{\parskip}{\lmu@parskip}
 \linespread{1.15}
 
-%\setbeamertemplate{blocks}[default]
+\setbeamertemplate{block begin}{\lmu@block{}}
+\setbeamertemplate{block alerted begin}{\lmu@block{ alerted}}
+\setbeamertemplate{block example begin}{\lmu@block{ example}}
+\setbeamertemplate{block end}{\end{beamercolorbox}\vspace*{0.2ex}}
+\setbeamertemplate{block alerted end}{\end{beamercolorbox}\vspace*{0.2ex}}
+\setbeamertemplate{block example end}{\end{beamercolorbox}\vspace*{0.2ex}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Theorem & Proof Environment %%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -217,9 +225,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Footnotes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamertemplate{footnote}{%
- \parindent 0em\noindent%
- \raggedright
- \usebeamercolor{footnote}\hbox to 0.8em{\hfil\insertfootnotemark}\insertfootnotetext\par%
+  \parindent 0em\noindent%
+  \raggedright
+  \usebeamercolor{footnote}\hbox to 0.8em{\hfil\insertfootnotemark}\insertfootnotetext\par%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography Entries %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
