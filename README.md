@@ -17,8 +17,11 @@ copy the project files into `<TEXMF>/tex/latex/mnm-beamer`.
 In your presentation, use the _beamer_ document class and tell it to use the LMU
 theme:
 
-```latex \documentclass[ compress,   % compresses the navigation into one line
-utf8        % good for using ö,ä,ü,ß,...  ]{beamer}
+```latex
+\documentclass[
+    compress,   % compresses the navigation into one line
+    utf8        % good for using ö,ä,ü,ß,...
+]{beamer}
 
 \usetheme{LMU}
 ```
