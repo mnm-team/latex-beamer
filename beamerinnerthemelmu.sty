@@ -10,7 +10,7 @@
 %\setlength{\a}{\m*18.4mm}
 %\newlength{\b} % Separation of Boxes
 %\setlength{\b}{\m*2mm}
-%\newlength{\h} % Height of Header
+%\newlength{\h} % Heightof Header
 %\setlength{\h}{\m*29mm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Background %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,17 +133,21 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Navigation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\setbeamersize{mini frame size=1ex}
-%\setbeamersize{mini frame offset=-.1ex}
+%empty sidebar because we want our navigation symbols to be in the footer
+\setbeamertemplate{sidebar right}{}
 
-\setbeamertemplate{navigation symbols}{
-  %    \ifnum\thepage>1\relax%
-  %        \insertslidenavigationsymbol%
-  %        \insertframenavigationsymbol%
-  %        \insertsubsectionnavigationsymbol%
-  %        \insertsectionnavigationsymbol%
-  %    \fi
+\setbeamertemplate{navigation symbols}
+{%
+  \ifnum\thepage>1\relax%
+    \insertslidenavigationsymbol%
+    \insertframenavigationsymbol%
+    \insertsubsectionnavigationsymbol%
+    \insertsectionnavigationsymbol%
+    %\insertdocnavigationsymbol
+    %\insertbackfindforwardnavigationsymbo}
+  \fi
 }
+
 
 %%%%%%%%%%%%%%%%%%%%%%% Itemize & Enumerate Environments %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -165,54 +169,54 @@
 \par\vskip\medskipamount%
 \setlength{\parskip}{0pt}
 \ifbeamercolorempty[bg]{block title#1}{%
-\begin{beamercolorbox}[rightskip=0pt plus 4em]{block title#1}}{%
-\ifbeamercolorempty[bg]{block title}{%
-\begin{beamercolorbox}[rightskip=0pt plus 4em]{block title#1}%
-}%
-{%
-\begin{beamercolorbox}[
-    sep=\dimexpr\lmu@blocksep-\lmu@blockadjust\relax,
-    leftskip=\lmu@blockadjust,
-    rightskip=\dimexpr\lmu@blockadjust plus 4em\relax
-  ]{block title#1}%
-  }}%
-  \usebeamerfont*{block title#1}%
-  \lmu@strut%
-  \insertblocktitle%
-  \lmu@strut%
-\end{beamercolorbox}%
-\nointerlineskip%
-\ifbeamercolorempty[bg]{block body#1}{%
-  \begin{beamercolorbox}[vmode]{block body#1}}
-    {
-    \ifbeamercolorempty[bg]{block body}{%
-      \begin{beamercolorbox}[vmode]{block body#1}%
-        }{%
-        \begin{beamercolorbox}[sep=\lmu@blocksep, vmode]{block body#1}%
-          \vspace{-\lmu@parskip}
-          }
-          }%
-          \usebeamerfont{block body#1}%
-          \setlength{\parskip}{\lmu@parskip}%
-          }
-          \setbeamertemplate{block begin}{\lmu@block{}}
-          \setbeamertemplate{block alerted begin}{\lmu@block{ alerted}}
-          \setbeamertemplate{block example begin}{\lmu@block{ example}}
-          \setbeamertemplate{block end}{\end{beamercolorbox}\vspace*{0.2ex}}
+  \begin{beamercolorbox}[rightskip=0pt plus 4em]{block title#1}}{%
+    \ifbeamercolorempty[bg]{block title}{%
+      \begin{beamercolorbox}[rightskip=0pt plus 4em]{block title#1}%
+        }%
+        {%
+        \begin{beamercolorbox}[
+            sep=\dimexpr\lmu@blocksep-\lmu@blockadjust\relax,
+            leftskip=\lmu@blockadjust,
+            rightskip=\dimexpr\lmu@blockadjust plus 4em\relax
+          ]{block title#1}%
+          }}%
+          \usebeamerfont*{block title#1}%
+          \lmu@strut%
+          \insertblocktitle%
+          \lmu@strut%
+        \end{beamercolorbox}%
+        \nointerlineskip%
+        \ifbeamercolorempty[bg]{block body#1}{%
+          \begin{beamercolorbox}[vmode]{block body#1}}
+            {
+            \ifbeamercolorempty[bg]{block body}{%
+              \begin{beamercolorbox}[vmode]{block body#1}%
+                }{%
+                \begin{beamercolorbox}[sep=\lmu@blocksep, vmode]{block body#1}%
+                  \vspace{-\lmu@parskip}
+                  }
+                  }%
+                  \usebeamerfont{block body#1}%
+                  \setlength{\parskip}{\lmu@parskip}%
+                  }
+                  \setbeamertemplate{block begin}{\lmu@block{}}
+                  \setbeamertemplate{block alerted begin}{\lmu@block{ alerted}}
+                  \setbeamertemplate{block example begin}{\lmu@block{ example}}
+                  \setbeamertemplate{block end}{\end{beamercolorbox}\vspace*{0.2ex}}
 
-        \setbeamertemplate{block alerted end}{\end{beamercolorbox}\vspace*{0.2ex}}
-    \setbeamertemplate{block example end}{\end{beamercolorbox}\vspace*{0.2ex}}
+                \setbeamertemplate{block alerted end}{\end{beamercolorbox}\vspace*{0.2ex}}
+            \setbeamertemplate{block example end}{\end{beamercolorbox}\vspace*{0.2ex}}
 
-\newlength{\lmu@parskip}
-\setlength{\lmu@parskip}{0.5em}
-\setlength{\parskip}{\lmu@parskip}
-\linespread{1.15}
+        \newlength{\lmu@parskip}
+        \setlength{\lmu@parskip}{0.5em}
+        \setlength{\parskip}{\lmu@parskip}
+        \linespread{1.15}
 
-\setbeamertemplate{block begin}{\lmu@block{}}
-\setbeamertemplate{block alerted begin}{\lmu@block{ alerted}}
-\setbeamertemplate{block example begin}{\lmu@block{ example}}
-\setbeamertemplate{block end}{\end{beamercolorbox}\vspace*{0.2ex}}
-\setbeamertemplate{block alerted end}{\end{beamercolorbox}\vspace*{0.2ex}}
+        \setbeamertemplate{block begin}{\lmu@block{}}
+        \setbeamertemplate{block alerted begin}{\lmu@block{ alerted}}
+        \setbeamertemplate{block example begin}{\lmu@block{ example}}
+        \setbeamertemplate{block end}{\end{beamercolorbox}\vspace*{0.2ex}}
+    \setbeamertemplate{block alerted end}{\end{beamercolorbox}\vspace*{0.2ex}}
 \setbeamertemplate{block example end}{\end{beamercolorbox}\vspace*{0.2ex}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Theorem & Proof Environment %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -233,5 +237,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography Entries %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamertemplate{bibliography item}{\insertbiblabel}
+
+
+\defbeamertemplate{section page}{simple}{
+  \begin{center}
+    \usebeamercolor[fg]{section title}
+    \usebeamerfont{section title}
+    \insertsectionhead\par
+    \ifx\insertsubsectionhead\@empty\else
+      \usebeamercolor[fg]{subsection title}
+      \usebeamerfont{subsection title}
+      \insertsubsectionhead
+    \fi
+  \end{center}
+}
+
+\setbeamertemplate{section page}{%
+  \usebeamertemplate*{section page}
+}
 
 \mode<all>

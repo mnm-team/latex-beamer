@@ -2,25 +2,53 @@
 % use LMU theme
 \usetheme{LMU}
 
-% Configuration of listings and common packages
-\input{preamble/config}
+% This setups a lot of recommended settings and packages you usually need
+% anyway. So let me take care for you and your document stays clear.
 
+% Examples: Tables, Graphics, Listings, Hyperref...
+%
+\input{recommended-settings}
 
 \usepackage[style=ieee]{biblatex}
 \addbibresource{lmu-example.bib}
 
-% setup sectionpage if you want one
-\AtBeginSection{
-  \begin{frame}[allowframebreaks,noframenumbering]{Outline}
-    \tableofcontents[currentsection]
-  \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                 Customizations                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% If you want no navigation uncomment this
+%\beamertemplatenavigationsymbolsempty
+
+% setup listings
+\lstset{
+  basicstyle=\ttfamily\color{black},
+  showstringspaces=false
 }
 
+\lstdefinestyle{highlight}{
+  keywordstyle=\color{red},
+  commentstyle=\color{lmu@darkgray}
+}
+
+\lstdefinestyle{basetex}{
+language={[LaTeX]Tex},
+basicstyle=\color{black!40},
+keywordstyle=\color{red!40},
+commentstyle=\color{lmu@darkgray!40},
+moredelim=**[il][\only<+>{\color{black}\lstset{style=highlight}}]{@}
+}
+
+\lstdefinestyle{basec}{
+language=C,
+basicstyle=\color{black!40},
+keywordstyle=\color{red!40},
+commentstyle=\color{green!40},
+moredelim=**[il][\only<+>{\color{black}\lstset{style=highlight}}]{@}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                  Title Page Data                           %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % helper command to add multiple authors
 \newcommand{\newauthor}[2]{
 \parbox[c]{0.26\textwidth}{
@@ -47,6 +75,11 @@
 
 \title{Title}
 \subtitle{Subtitle}
+
+\hypersetup{
+  pdftitle={Title},
+  pdfauthor={Author},
+  hidelinks}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
