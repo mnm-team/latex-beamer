@@ -38,20 +38,9 @@ help :
 	@echo ""
 	@echo "This Makefile creates various outputs using pandoc"
 	@echo "  make $(TEX)      : Generate TEX"
-	@echo "  make $(PDFS)     : Generate PDF"
-	@echo "  make $(HTML)     : Generate HTML"
+	@echo "  make $(PDF)     : Generate PDF"
 	@echo ""
 
 
 .PHONY: clean veryclean help
 
-#%.pdf: %.md $(BIB) $(TEMPLATE)
-#	pandoc \
-#		--toc \
-#		--top-level-division=chapter \
-#		--number-sections \
-#		--bibliography=$(BIB) --bibliography=$(MYPUBS) \
-#		--filter pandoc-crossref -M cref=true \
-#		--filter pandoc-citeproc --csl=./csl/$(CSL).csl \
-#		--template $(TEMPLATE) \
-#		-o $@ $<
