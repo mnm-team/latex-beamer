@@ -15,11 +15,18 @@ LATEX = lualatex
 PDF=$(MAIN:.md=.pdf)
 TEX=$(MAIN:.md=.tex)
 
-$(TEX): $(MAIN) $(BIB) $(TEMPLATE)
-	pandoc -o $@ -t beamer --template $(TEMPLATE) $< --bibliography $(BIB) --biblatex --listings --pdf-engine=$(LATEX)
-
 $(PDF): $(TEX)
+	latexmk -silent -$(LATEX) $(TEX)
+
+verbose: $(TEX)
 	latexmk -$(LATEX) $(TEX)
+
+$(TEX): $(MAIN) $(BIB) $(TEMPLATE)
+	pandoc --template $(TEMPLATE) \
+ 	--biblatex --listings \
+	--pdf-engine=$(LATEX) \
+	--bibliography $(BIB) \
+	-o $@ -t beamer $<
 
 clean:
 	latexmk -c $(TEX)
