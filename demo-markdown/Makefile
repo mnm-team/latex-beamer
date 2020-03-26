@@ -1,6 +1,3 @@
-## Location of Pandoc support files.
-# PREFIX = $(HOME)/.pandoc
-
 ## MAIN File
 MAIN = lmu-example.md
 
