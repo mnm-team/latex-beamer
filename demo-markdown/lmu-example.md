@@ -79,12 +79,39 @@ BUT...
 
 ## Tables
 
-Latex tables are always a pain. In Markdown it is much easier.
+Latex tables are always a pain. In Markdown it's way easier. Here is an example
+using pipe syntax.
 
 | Syntax    | Description |
 | --------- | ----------- |
 | Header    | Title       |
 | Paragraph | Text        |
+
+## Multiline Tables
+
+This is an example of multiline tables. Everything is documented in Pandocs
+user guide.^[https://pandoc.org/MANUAL.html#tables]
+
+<!--
+here we change the font size because our table is too large for a single frame.
+-->
+
+\small
+
+-------------------------------------------------------------
+ Centered   Default           Right Left
+  Header    Aligned         Aligned Aligned
+----------- ------- --------------- -------------------------
+   First    row                12.0 Example of a row that
+                                    spans multiple lines.
+
+  Second    row                 5.0 Here's another one. Note
+                                    the blank line between
+                                    rows.
+-------------------------------------------------------------
+
+Table: Here's the caption. It, too, may span
+multiple lines.
 
 ## Figures
 
