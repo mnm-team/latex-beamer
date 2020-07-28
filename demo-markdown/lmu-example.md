@@ -14,14 +14,17 @@ slide-level: 2
 
 # Overview
 
-## Motivation
+## Background
 
 - The LMU provides students, professors and other staff with
   - Corporate Design Manual [@lmu2006]
   - Web-Styleguide [@lmu2007]
   - templates for MS Office^[Although we really dislike MS Products]
 - The IT-Service for Physics provides some \LaTeX\ templates such as beamer theme [@lmu2014].
-- The MNM Team again modernized this and changed the ratio to 16:9.
+- The MNM Team again modernized this
+  - New theme based on recently revised corporate design templates.
+  - 16:9 format
+  - Use Markdown to write presentations which is even simpler than Powerpoint.
 
 ## Usage
 
