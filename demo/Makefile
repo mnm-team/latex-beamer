@@ -1,12 +1,9 @@
 MAINTEX 	:= lmu-example.tex
 
-LATEX 		:= lualatex
-FLAGS 		:= -quiet -shell-escape
-
 .PHONY : default help pdf verbose clean veryclean
 
 default :
-	latexmk -$(LATEX) $(FLAGS) $(MAINTEX)
+	latexmk -quiet $(MAINTEX)
 
 help :
 	@echo ""
@@ -19,10 +16,10 @@ help :
 	@echo ""
 
 pdf:
-	latexmk -g -$(LATEX) $(FLAGS) $(MAINTEX)
+	latexmk -g $(MAINTEX)
 
 verbose :
-	latexmk -g -$(LATEX) $(FLAGS) -verbose $(MAINTEX)
+	latexmk -g -verbose $(MAINTEX)
 
 clean :
 	latexmk -c

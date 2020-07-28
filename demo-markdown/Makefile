@@ -6,22 +6,18 @@ BIB = lmu-example.bib
 
 TEMPLATE = templates/pandoc.tex
 
-## PDF Engine, only for Tex Files
-LATEX = lualatex
-
 PDF=$(MAIN:.md=.pdf)
 TEX=$(MAIN:.md=.tex)
 
 $(PDF): $(TEX)
-	latexmk -silent -$(LATEX) $(TEX)
+	latexmk -silent $(TEX)
 
 verbose: $(TEX)
-	latexmk -$(LATEX) $(TEX)
+	latexmk  $(TEX)
 
 $(TEX): $(MAIN) $(BIB) $(TEMPLATE)
 	pandoc --template $(TEMPLATE) \
- 	--biblatex --listings \
-	--pdf-engine=$(LATEX) \
+	--biblatex --listings \
 	--bibliography $(BIB) \
 	-o $@ -t beamer $<
 

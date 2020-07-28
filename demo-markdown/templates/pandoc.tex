@@ -1,12 +1,49 @@
 % Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-%
 \documentclass[
   fleqn,compress,utf8,aspectratio=169,t,
 ]{beamer}
 
+$if(colorlinks)$
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+$endif$
+
 \usetheme[]{lmu}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Font %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+$if(fontfamily)$
+\usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
+$else$
+\usepackage{lmodern}
+$endif$
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  $if(mathspec)$
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{unicode-math}
+  \fi
+  $else$
+  \usepackage{unicode-math}
+  $endif$
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[$for(microtypeoptions)$$microtypeoptions$$sep$,$endfor$]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
 
 \usepackage{pgfpages}
 % Prevent slide breaks in the middle of a paragraph
@@ -24,10 +61,42 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 
+\usepackage{xcolor}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \newif\ifbibliography
 \urlstyle{same} % disable monospaced font for URLs
+
+\hypersetup{%
+$if(title-meta)$
+pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+pdfauthor={$author-meta$},
+$endif$
+$if(lang)$
+pdflang={$lang$},
+$endif$
+$if(subject)$
+pdfsubject={$subject$},
+$endif$
+$if(keywords)$
+pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+$if(colorlinks)$
+colorlinks=true,
+linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
+filecolor=$if(filecolor)$$filecolor$$else$Maroon$endif$,
+citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
+urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
+$else$
+hidelinks,
+$endif$
+pdfcreator={LaTeX via pandoc},
+$if(draft)$
+draft=false, % always enable hyperlinks even in draft mode
+$endif$
+}
 
 \usepackage{listings}
 \lstset{defaultdialect=[5.3]Lua}
@@ -35,6 +104,7 @@
 \lstset{
   basicstyle=\ttfamily
 }
+
 \usepackage{longtable,booktabs}
 \usepackage{caption}
 % Make caption package work with longtable
