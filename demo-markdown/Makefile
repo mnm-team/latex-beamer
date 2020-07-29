@@ -18,6 +18,7 @@ verbose: $(TEX)
 $(TEX): $(MAIN) $(BIB) $(TEMPLATE)
 	pandoc --template $(TEMPLATE) \
 	--biblatex --listings \
+	--from markdown-auto_identifiers \
 	--bibliography $(BIB) \
 	-o $@ -t beamer $<
 
