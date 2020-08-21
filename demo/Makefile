@@ -16,10 +16,10 @@ help :
 	@echo ""
 
 pdf:
-	latexmk -g $(MAINTEX)
+	latexmk -pdf -g $(MAINTEX)
 
 verbose :
-	latexmk -g -verbose $(MAINTEX)
+	latexmk -pdf -g -verbose $(MAINTEX)
 
 clean :
 	latexmk -c
