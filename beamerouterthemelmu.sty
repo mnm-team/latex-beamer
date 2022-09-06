@@ -3,16 +3,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Head & Foot Lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \defbeamertemplate*{headline}{lmu theme}{
-  %\leavemode%
+  % \leavemode%
   \begin{beamercolorbox}[wd=.7\paperwidth,ht=17mm,sep=3mm,%
       leftskip=.19\paperwidth%
     ]{section in head/foot}
-    %\begin{beamercolorbox}[wd=\paperwidth,ht=17mm,sep=3mm,leftskip=29mm]{section in head/foot}
-    \ifnum\thepage>1\relax%
-      \usebeamerfont{section in head/foot}\insertsection
-    \fi
+   \ifnum\thepage>1\relax%
+     \usebeamerfont{section in head/foot}\insertframetitle
+   \else
+     % \centering\usebeamerfont{section in head/foot}\inserttitle
+   \fi
   \end{beamercolorbox}
 }
+
+\setbeamertemplate{frametitle}{\insertframesubtitle}
 
 \defbeamertemplate*{footline}{lmu theme}{%
   \leavevmode%
