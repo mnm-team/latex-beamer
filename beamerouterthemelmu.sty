@@ -4,18 +4,25 @@
 
 \defbeamertemplate*{headline}{lmu theme}{
   % \leavemode%
-  \begin{beamercolorbox}[wd=.7\paperwidth,ht=17mm,sep=3mm,%
-      leftskip=.19\paperwidth%
+    \hfill
+  \begin{beamercolorbox}[wd=0.6\paperwidth,ht=15mm,sep=3mm,%
+      % leftskip=.19\paperwidth,%
+      center%
     ]{section in head/foot}
    \ifnum\thepage>1\relax%
-     \usebeamerfont{section in head/foot}\insertframetitle
+      \vskip2pt plus 1cm
+      \usebeamerfont{section in head/foot}\color{black}\large\insertframetitle
+
+      \usebeamerfont{subsection in head/foot}\color{lmu@lightgray}\insertframesubtitle
    \else
      % \centering\usebeamerfont{section in head/foot}\inserttitle
    \fi
   \end{beamercolorbox}
+  \hfill{}
 }
 
-\setbeamertemplate{frametitle}{\insertframesubtitle}
+\setbeamertemplate{frametitle}{}
+\setbeamertemplate{framesubtitle}{}
 
 \defbeamertemplate*{footline}{lmu theme}{%
   \leavevmode%

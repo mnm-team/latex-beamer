@@ -1,4 +1,5 @@
 \mode<presentation>
+\usetikzlibrary{calc}
 
 % Length definitions as given in the LMU Corporate Design Manual
 %\newlength{\m} % Multiplicator corresponding to aspect ratio
@@ -22,22 +23,19 @@
     \node[anchor=south west,inner sep=0] at (2mm,\the\paperheight-15mm) {
       \includegraphics[height=13mm]{lmulogo} };
     \ifnum\thepage>1\relax%
-      % rectangle for title
-      \draw[color=lmu@lightgray] (31.2mm,\the\paperheight-15mm)
-      rectangle (\the\paperwidth-40mm,\the\paperheight-2mm);
-      \node[anchor=south east,inner sep=0,draw,color=lmu@lightgray,
-        minimum width=0.25\textwidth, minimum height=13mm, align=left] at
-      (\the\paperwidth-2mm,\the\paperheight-15mm) {
-        \includegraphics[width=0.2\textwidth, height=13mm]{mnmlogo}%
-      };
-      \node[anchor=south east,inner sep=0] at
-      (\the\paperwidth-2mm,\the\paperheight-20mm) {
+      \node[anchor=south east,inner sep=0,overlay] at
+      (\the\paperwidth-7mm,\the\paperheight-17mm) {
         \includegraphics[height=13mm]{siegel}%
       };
+      \node[anchor=south east,inner sep=0,color=lmu@lightgray,
+        minimum width=0.25\textwidth, minimum height=13mm, align=left] at
+      (\the\paperwidth-2mm,\the\paperheight-18mm) (mnmlogo) {
+        \includegraphics[width=0.2\textwidth, height=13mm]{mnmlogo}%
+      };
     \else%
-      \node[anchor=south east,inner sep=0,draw,color=lmu@lightgray, minimum
+      \node[anchor=south east,inner sep=0,color=lmu@lightgray, minimum
         width=0.25\textwidth, minimum height=13mm] at
-      (\the\paperwidth-2mm,\the\paperheight-15mm) {
+      (\the\paperwidth-2mm,\the\paperheight-16mm) {
         \includegraphics[width=0.2\textwidth, height=13mm]{mnmlogo}%
       };
     \fi
@@ -46,13 +44,17 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Part Pages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pgfdeclareimage[height=.5\paperheight]{lmu-siegel-large}{siegel}
+\pgfdeclareimage[height=.6\paperheight]{lmu-siegel-large}{siegel}
 \setbeamertemplate{title page}{%
   \setlength{\unitlength}{\paperwidth}
-  \begin{picture}(0,0)%
-    \put(0.70,-0.45){%
+  \begin{tikzpicture}[remember picture,overlay]
+      % Move the background image up a bit so it does not get covered by the
+      % invisible footer
+      \node[inner sep=0pt, anchor=south east] at ($ (current page.south east) + (-2ex, 2ex) $)
+    {
       \pgfuseimage{lmu-siegel-large}%
-    }%
+    };
+  \end{tikzpicture}%
     \put(0,-0.45){%
       \begin{minipage}[b][0.95\paperheight]{\textwidth}
         \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
@@ -68,7 +70,6 @@
         \vspace*{1mm}
       \end{minipage}
     }%
-  \end{picture}
 }
 
 \def\maketitle{%
