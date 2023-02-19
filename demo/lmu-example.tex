@@ -12,6 +12,8 @@
 \usepackage[style=ieee]{biblatex}
 \addbibresource{lmu-example.bib}
 
+\usepackage{lmodern}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                 Customizations                             %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -102,10 +104,7 @@ moredelim=**[il][\only<+>{\color{black}\lstset{style=highlight}}]{@}
   \begin{itemize}
     \item The LMU provides students, professors and other staff with
           \begin{itemize}
-            \item Corporate Design Manual~\cite{lmu2006}
-            \item Web-Styleguide~\cite{lmu2007}
-            \item templates for MS Office\footnote{Although we really
-                    dislike MS Products.}
+            \item Corporate Design Manual~\cite{lmu2023}
           \end{itemize}
           \pause
     \item The IT-Service for Physics provides some \LaTeX\ templates such as beamer
@@ -119,7 +118,7 @@ moredelim=**[il][\only<+>{\color{black}\lstset{style=highlight}}]{@}
 
 \begin{frame}{Usage}
   \begin{itemize}
-    \item<1-> install the style-files in your project-directory
+    \item install the style-files in your project-directory
           \begin{itemize}
             \item beamerthemeLMU.sty
             \item beamerinnerthemelmu.sty
@@ -127,8 +126,19 @@ moredelim=**[il][\only<+>{\color{black}\lstset{style=highlight}}]{@}
             \item beamercolorthemelmu.sty
             \item beamerfontthemelmu.sty
           \end{itemize}
-    \item<2-> compile twice with pdflatex
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Usage}
+	\begin{itemize}
+		\item install the logos project-directory
+		\begin{itemize}
+			\item lmulogogreen.png
+			\item siegel.pdf
+			\item mnmlogo.pdf
+		\end{itemize}
+		\item compile twice with pdflatex
+	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Usage}
@@ -314,7 +324,7 @@ moredelim=**[il][\only<+>{\color{black}\lstset{style=highlight}}]{@}
 \subsection{References}
 \begin{frame}[allowframebreaks]
   \frametitle{References}
-  \nocite{*}
+  %\nocite{*}
   \printbibliography[heading=none]
 \end{frame}
 
