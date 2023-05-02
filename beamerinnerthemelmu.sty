@@ -33,13 +33,16 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Part Pages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pgfdeclareimage[height=.5\paperheight]{lmu-siegel-large}{siegel}
+\pgfdeclareimage[height=.6\paperheight]{lmu-siegel-large}{siegel}
 \setbeamertemplate{title page}{%
   \setlength{\unitlength}{\paperwidth}
-  \begin{picture}(0,0)%
-    \put(0.70,-0.45){%
+  \begin{tikzpicture}[remember picture,overlay]
+      % Big siegel in the bottom right corner on the title page
+      \node[inner sep=0pt, anchor=south east] at ($ (current page.south east) + (4ex, -5ex) $)
+    {
       \pgfuseimage{lmu-siegel-large}%
-    }%
+    };
+  \end{tikzpicture}%
     \put(0,-0.45){%
       \begin{minipage}[b][0.95\paperheight]{\textwidth}
         \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
@@ -55,7 +58,6 @@
         \vspace*{1mm}
       \end{minipage}
     }%
-  \end{picture}
 }
 
 \def\maketitle{%

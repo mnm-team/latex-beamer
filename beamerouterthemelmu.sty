@@ -16,6 +16,9 @@
 
 \defbeamertemplate*{footline}{lmu theme}{%
   \leavevmode%
+  \ifnum \theframenumber=1
+        % This is the title frame, no footline
+  \else
   \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.5ex,rightskip=1ex]{author in head/foot}
     \ifnum\thepage>1\relax%
       \hbox{
@@ -28,6 +31,7 @@
       }
     \fi
   \end{beamercolorbox}%
+  \fi
   \vskip0pt%
 }
 
