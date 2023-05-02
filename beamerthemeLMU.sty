@@ -11,10 +11,12 @@
  \RequirePackage[utf8]{inputenc}
  \RequirePackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
+ \IfFileExists{polyglossia.sty}{\RequirePackage{polyglossia}}{}
  \RequirePackage{unicode-math}
  \defaultfontfeatures{Scale=MatchLowercase}
  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
+
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\RequirePackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
