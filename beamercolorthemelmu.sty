@@ -34,8 +34,6 @@
 	bg=lmu@background
 }
 
-\usebeamercolor[fg]{normal text}
-
 \setbeamercolor{palette primary}{%
 	use=normal text,
 	fg=normal text.bg,
@@ -43,13 +41,15 @@
 }
 
 \setbeamercolor*{structure}{fg=lmu@normaltext}
-\setbeamercolor*{alerted text}{fg=red!75!black}
+\setbeamercolor*{alerted text}{fg=lmu@red!75}
 \setbeamercolor*{author}{fg=lmu@darkgray}
-\setbeamercolor*{author in head/foot}{bg=lmu@background1,fg=lmu@lightgray}
+\setbeamercolor*{author in head/foot}{bg=lmu@background1,fg=lmu@middlegray}
 \setbeamercolor*{institute}{fg=lmu@darkgray}
-\setbeamercolor*{title}{}
-\setbeamercolor*{subtitle}{}
-\setbeamercolor{section in head/foot}{fg=lmu@lightgray}
+\setbeamercolor*{title}{fg=lmu@black}
+\setbeamercolor*{subtitle}{fg=lmu@middlegray}
+\setbeamercolor{section in head/foot}{fg=lmu@green}
+\setbeamercolor{subsection in head/foot}{fg=lmu@middlegray}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Blocks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -62,15 +62,24 @@
 %\setbeamercolor*{block title alerted}{fg=red!75!black,bg=red!50!white}
 %\setbeamercolor*{block body alerted}{bg=white}
 
-\setbeamercolor{block title}{%
-	use=normal text,
-	fg=normal text.fg,
-	bg=normal text.bg!80!fg
-}
-\setbeamercolor{block body}{
-	use={block title, normal text},
-	bg=block title.bg!50!normal text.bg
-}
+% \setbeamercolor{block title}{%
+% 	use=normal text,
+% 	fg=normal text.fg,
+% 	bg=normal text.bg!80!fg
+% }
+% \setbeamercolor{block body}{
+% 	use={block title, normal text},
+% 	bg=block title.bg!50!normal text.bg
+% }
+\setbeamercolor*{alerted text}{fg=lmu@orange}
+
+\setbeamercolor{block title example}{bg=lmu@cyan!40,fg=lmu@black}
+\setbeamercolor{block body example}{bg=lmu@cyan!20}
+\setbeamercolor{block title alerted}{bg=lmu@orange!40,fg=lmu@black}
+\setbeamercolor{block body alerted}{bg=lmu@orange!20}
+\setbeamercolor{block title}{bg=lmu@green!40,fg=lmu@black}
+\setbeamercolor{block body}{bg=lmu@green!20}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Math %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
