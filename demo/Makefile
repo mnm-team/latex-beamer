@@ -3,7 +3,7 @@ MAINTEX 	:= lmu-example.tex
 .PHONY : default help pdf verbose clean veryclean
 
 default :
-	latexmk -quiet $(MAINTEX)
+	latexmk -pdflua -quiet $(MAINTEX)
 
 help :
 	@echo ""
@@ -16,10 +16,10 @@ help :
 	@echo ""
 
 pdf:
-	latexmk -pdf -g $(MAINTEX)
+	latexmk -pdflua -g $(MAINTEX)
 
 verbose :
-	latexmk -pdf -g -verbose $(MAINTEX)
+	latexmk -pdflua -g -verbose $(MAINTEX)
 
 clean :
 	latexmk -c
