@@ -20,7 +20,7 @@
     \useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
     \fill[color=lmu@background1] (0,\the\paperheight-17mm) rectangle (\the\paperwidth,\the\paperheight);
     \node[anchor=south west,inner sep=0] at (2mm,\the\paperheight-15mm) {
-      \includegraphics[height=13mm]{lmulogo} };
+      \includegraphics[height=13mm]{lmulogo-invert} };
     \ifnum\thepage>1\relax%
       \node[anchor=south east,inner sep=0,overlay] at
       (\the\paperwidth-7mm,\the\paperheight-17mm) {
@@ -47,9 +47,8 @@
 \setbeamertemplate{title page}{%
   \setlength{\unitlength}{\paperwidth}
   \begin{tikzpicture}[remember picture,overlay]
-      % Move the background image up a bit so it does not get covered by the
-      % invisible footer
-      \node[inner sep=0pt, anchor=south east] at ($ (current page.south east) + (-2ex, 2ex) $)
+      % Big siegel in the bottom right corner on the title page
+      \node[inner sep=0pt, anchor=south east] at ($ (current page.south east) + (4ex, -5ex) $)
     {
       \pgfuseimage{lmu-siegel-large}%
     };

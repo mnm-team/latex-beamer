@@ -4,21 +4,21 @@
 
 \defbeamertemplate*{headline}{lmu theme}{
   % \leavemode%
-    \hfill
-  \begin{beamercolorbox}[wd=0.6\paperwidth,ht=15mm,sep=3mm,%
-      % leftskip=.19\paperwidth,%
-      center%
-    ]{section in head/foot}
+    \hfill%
+  \begin{beamercolorbox}[wd=0.6\paperwidth,ht=15mm,dp=4ex,sep=3mm]{section in head/foot}
    \ifnum\thepage>1\relax%
-      \vskip2pt plus 1cm
-      \usebeamerfont{section in head/foot}\color{black}\large\insertframetitle
-
-      \usebeamerfont{subsection in head/foot}\color{lmu@lightgray}\insertframesubtitle
+      % \vskip2pt% plus 1cm
+      \usebeamerfont{section in head/foot}\large\usebeamercolor{title}\strut\insertframetitle\strut%
+    % Check whether framesubtitle will produce no text output
+    \setbox0=\hbox{\insertframesubtitle}\ifdim\wd0=0pt
+    \else%
+    : \insertframesubtitle%
+    \fi
    \else
-     % \centering\usebeamerfont{section in head/foot}\inserttitle
-   \fi
-  \end{beamercolorbox}
+   \fi%
+  \end{beamercolorbox}%
   \hfill{}
+  \vspace{-9.5pt}%
 }
 
 \setbeamertemplate{frametitle}{}
@@ -26,18 +26,22 @@
 
 \defbeamertemplate*{footline}{lmu theme}{%
   \leavevmode%
-  \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.5ex,rightskip=1ex]{author in head/foot}
-    \ifnum\thepage>1\relax%
-      \hbox{
-        \usebeamerfont{author in head/foot}\insertshortauthor,
-        \usebeamerfont{title in head/foot}\inserttitle
-      }\hfill\hbox{
-        \raise-0.6ex\hbox{%
-          \usebeamertemplate***{navigation symbols}
-        } \insertframenumber/\inserttotalframenumber
-      }
-    \fi
-  \end{beamercolorbox}%
+  \ifnum \theframenumber=1
+        % This is the title frame, no footline
+  \else
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.5ex,rightskip=1ex]{author in head/foot}
+        \ifnum\thepage>1\relax%
+        \hbox{
+            \usebeamerfont{author in head/foot}\insertshortauthor,
+            \usebeamerfont{title in head/foot}\inserttitle
+        }\hfill\hbox{
+            \raise-0.6ex\hbox{%
+            \usebeamertemplate***{navigation symbols}
+            } \insertframenumber/\inserttotalframenumber
+        }
+        \fi
+    \end{beamercolorbox}%
+  \fi
   \vskip0pt%
 }
 
