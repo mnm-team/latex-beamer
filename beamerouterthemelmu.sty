@@ -29,18 +29,18 @@
   \ifnum \theframenumber=1
         % This is the title frame, no footline
   \else
-    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.5ex,rightskip=1ex]{author in head/foot}
-        \ifnum\thepage>1\relax%
-        \hbox{
-            \usebeamerfont{author in head/foot}\insertshortauthor,
-            \usebeamerfont{title in head/foot}\inserttitle
-        }\hfill\hbox{
-            \raise-0.6ex\hbox{%
-            \usebeamertemplate***{navigation symbols}
-            } \insertframenumber/\inserttotalframenumber
-        }
-        \fi
-    \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.5ex,rightskip=1ex]{author in head/foot}
+    \ifnum\thepage>1\relax%
+      \hbox{
+        \usebeamerfont{author in head/foot}\insertshortauthor,
+        \usebeamerfont{title in head/foot}\insertshorttitle
+      }\hfill\hbox{
+        \raise-0.6ex\hbox{%
+          \usebeamertemplate***{navigation symbols}
+        } \insertframenumber/\inserttotalframenumber
+      }
+    \fi
+  \end{beamercolorbox}%
   \fi
   \vskip0pt%
 }

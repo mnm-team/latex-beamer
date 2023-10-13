@@ -48,13 +48,13 @@
   \setlength{\unitlength}{\paperwidth}
   \begin{tikzpicture}[remember picture,overlay]
       % Big siegel in the bottom right corner on the title page
-      \node[inner sep=0pt, anchor=south east] at ($ (current page.south east) + (4ex, -5ex) $)
+      \node[inner sep=0pt, anchor=south east, opacity=0.6] at ($ (current page.south east) + (4ex, -5ex) $)
     {
       \pgfuseimage{lmu-siegel-large}%
     };
   \end{tikzpicture}%
     \put(0,-0.45){%
-      \begin{minipage}[b][0.95\paperheight]{\textwidth}
+      \begin{minipage}[b][0.85\paperheight]{\textwidth}
         \ifx\inserttitlegraphic\@empty\else\usebeamertemplate*{title graphic}\fi
         \vfill%
         \ifx\inserttitle\@empty\else\usebeamertemplate*{title}\fi
@@ -99,7 +99,7 @@
   \raggedright%
   \insertsubtitle%
   \par%
-  \vspace*{0.5em}
+  \vspace*{0.25em}
 }
 %\newlength{\lmu@titleseparator@linewidth}
 %\setlength{\lmu@titleseparator@linewidth}{0.4pt}
@@ -112,7 +112,7 @@
 %  \par%
 %}
 \setbeamertemplate{author}{
-  \vspace*{2em}
+  \setlength{\baselineskip}{3.5em}
   \insertauthor%
   \par%
   \vspace*{0.25em}
