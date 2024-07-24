@@ -155,6 +155,7 @@
 \providecommand{\lmu@strut}{%
   \vphantom{ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz()}%
 }
+
 \newcommand{\lmu@block}[1]{
 \par\vskip\medskipamount%
 \setlength{\parskip}{0pt}
@@ -245,5 +246,9 @@
 \setbeamertemplate{section page}{%
   \usebeamertemplate*{section page}
 }
+
+%%%%%%%%%%%%%%%%%%%%% Adjust Spacing before & after Frame Title %%%%%%%%%%%%%%%%
+% (comment out to reduce the default spacing)
+% \addtobeamertemplate{frametitle}{\vspace*{-0.2cm}}{\vspace*{-0.35cm}}
 
 \mode<all>
