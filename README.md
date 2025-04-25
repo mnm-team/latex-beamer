@@ -14,6 +14,8 @@ $ git clone https://github.com/mnm-team/latex-beamer.git
 Alternatively if you want to install it system-wide or for the current user,
 copy the project files into `<TEXMF>/tex/latex/mnm-beamer`.
 
+TEXMF folder can befound with `kpsewhich -var-value=TEXMFHOME`.
+
 In your presentation, use the _beamer_ document class and tell it to use the LMU
 theme:
 
