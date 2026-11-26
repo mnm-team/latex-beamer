@@ -28,6 +28,33 @@ theme:
 \usetheme{LMU}
 ```
 
+## Layout - Customization
+
+```latex
+% Own logo in the right header box (or \logo{} for none)
+\logo{\includegraphics[height=5mm]{yourlogo}}
+
+% Previous title page (green title on white, large seal)
+\setbeamertemplate{title page}[classic]
+
+% Navigation symbols in the footline (off by default)
+\setbeamertemplate{navigation symbols}[lmu]
+
+% Section page (number, section, subsection) at the start of each section;
+% the centred page from before is \setbeamertemplate{section page}[simple]
+\AtBeginSection{\begin{frame}[plain,c]\sectionpage\end{frame}}
+```
+
+The LMU colours are available under short names: `lmugreen`, `lmublue`,
+`lmucyan`, `lmuviolet`, `lmured`, `lmuorange`, `lmublack`, `lmudarkgray`,
+`lmumediumgray`, `lmubrightgray`, `lmulightgray`, e.g. `\color{lmugreen}` or
+`fill=lmublue!8` in TikZ.
+
+Beamer colours and fonts of the title page: `title page panel` (text and panel
+colour), `title page label` (header label), and the fonts `title page title`,
+`title page info`, `title page institute`, `title page label`. Section page:
+`section page number`, `section title`, `subsection title`.
+
 ## Documentation
 
 This project provides the file _lmu-example.tex_. It shows how to use the beamer

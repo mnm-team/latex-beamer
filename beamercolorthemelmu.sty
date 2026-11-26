@@ -19,6 +19,19 @@
 \definecolor{lmu@red}{RGB}{215,25,25}
 \definecolor{lmu@orange}{RGB}{241,135,0}
 
+% Short names for use in documents, e.g. \color{lmugreen} or fill=lmublue!8
+\colorlet{lmugreen}{lmu@green}
+\colorlet{lmublack}{lmu@black}
+\colorlet{lmudarkgray}{lmu@darkgray}
+\colorlet{lmumediumgray}{lmu@mediumgray}
+\colorlet{lmubrightgray}{lmu@brightgray}
+\colorlet{lmulightgray}{lmu@lightgray}
+\colorlet{lmublue}{lmu@blue}
+\colorlet{lmucyan}{lmu@cyan}
+\colorlet{lmuviolet}{lmu@violet}
+\colorlet{lmured}{lmu@red}
+\colorlet{lmuorange}{lmu@orange}
+
 % Webstyleguide
 \definecolor{lmu@background}{RGB}{255,255,255}
 \definecolor{lmu@background1}{RGB}{255,255,255}
@@ -45,7 +58,7 @@
 }
 
 \setbeamercolor*{structure}{fg=lmu@normaltext}
-\setbeamercolor*{alerted text}{fg=red!75!black}
+\setbeamercolor*{alerted text}{fg=lmu@red}
 \setbeamercolor*{author}{fg=lmu@black}
 \setbeamercolor*{author in head/foot}{bg=lmu@background1,fg=lmu@mediumgray}
 \setbeamercolor*{institute}{fg=lmu@black}
@@ -54,6 +67,17 @@
 \setbeamercolor{section in head/foot}{fg=lmu@green}
 
 \setbeamercolor{frametitle}{fg=lmu@green,bg=lmu@background}
+
+% Title page (template [lmu]): text on the green panel, label in the header box
+\setbeamercolor{title page panel}{fg=lmu@white,bg=lmu@green}
+\setbeamercolor{title page label}{fg=lmu@green}
+
+% Section page (template [lmu])
+\setbeamercolor{section page number}{fg=lmu@green}
+\setbeamercolor{section title}{fg=lmu@blue}
+\setbeamercolor{subsection title}{fg=lmu@darkgray}
+
+\setbeamercolor{enumerate item}{fg=lmu@green}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Blocks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

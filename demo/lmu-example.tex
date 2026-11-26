@@ -18,8 +18,17 @@
 %%                                 Customizations                             %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% If you want navigation comment this
-\beamertemplatenavigationsymbolsempty
+% Navigation symbols are off by default. To show them in the footline:
+%\setbeamertemplate{navigation symbols}[lmu]
+
+% Project logo in the right header box instead of the MNM logo:
+%\logo{\includegraphics[height=5mm]{yourlogo}}
+
+% The previous title page (green title on white):
+%\setbeamertemplate{title page}[classic]
+
+% A section page at the start of each section
+\AtBeginSection{\begin{frame}[plain,c,noframenumbering]\sectionpage\end{frame}}
 
 % setup listings
 \lstset{
@@ -51,13 +60,13 @@ moredelim=**[il][\only<+>{\color{black}\lstset{style=highlight}}]{@}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                  Title Page Data                           %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% helper command to add multiple authors
-\newcommand{\newauthor}[2]{
-\parbox[c]{0.26\textwidth}{
+% helper command to add multiple authors: name with the mail address below;
+% authors separated by \and wrap to the next line if the panel is too narrow
+\newcommand{\newauthor}[2]{%
+\begin{tabular}[t]{@{}l@{}}
 {\bfseries #1} \\
-{\scriptsize{\href{mailto:#2}{#2}}}
-}
-%{#1}
+{\scriptsize\mdseries\href{mailto:#2}{#2}}
+\end{tabular}%
 }
 
 % Authors
@@ -111,6 +120,7 @@ moredelim=**[il][\only<+>{\color{black}\lstset{style=highlight}}]{@}
           theme~\cite{lmu2014}.
 
     \item The MNM Team again modernized this and changed the ratio to 16:9
+    \item Header and title page follow the LMU PowerPoint template (2022)
   \end{itemize}
 \end{frame}
 
@@ -154,7 +164,24 @@ moredelim=**[il][\only<+>{\color{black}\lstset{style=highlight}}]{@}
   \begin{itemize}
     \item<1-> navigation bar has to be compressed explicitly
     \item<2-> no options to \lstinline$\usetheme$ implemented yet
-    \item<3-> any customization has to happen in the theme's code
+    \item<3-> customization through beamer templates and colours
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Customization}
+  \begin{block}{Code}
+    \begin{lstlisting}[style=basetex]
+@\logo{\includegraphics[height=5mm]{logo}}
+@\setbeamertemplate{title page}[classic]
+@\setbeamertemplate{navigation symbols}[lmu]
+@\AtBeginSection{\frame[plain,c]{\sectionpage}}
+\end{lstlisting}
+  \end{block}
+  \vspace{-1ex}
+  \begin{itemize}
+    \item<1-> own logo in the right header box (default: MNM), previous title
+          page, navigation symbols in the footline (default: off)
+    \item<4-> section pages; colours \lstinline$lmugreen$, \lstinline$lmublue$, \ldots
   \end{itemize}
 \end{frame}
 

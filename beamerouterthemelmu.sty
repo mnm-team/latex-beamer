@@ -2,25 +2,37 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Head & Foot Lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\defbeamertemplate*{headline}{lmu theme}{
-  %\leavemode%
-  \begin{beamercolorbox}[wd=.7\paperwidth,ht=17mm,sep=3mm,%
-      leftskip=.19\paperwidth%
-    ]{section in head/foot}
-    %\begin{beamercolorbox}[wd=\paperwidth,ht=17mm,sep=3mm,leftskip=29mm]{section in head/foot}
-    \ifnum\thepage>1\relax%
-      \usebeamerfont{section in head/foot}\insertsection
-    \fi
-  \end{beamercolorbox}
+% Section name, vertically centred in the wide header box drawn by the
+% background (inner theme; positions in template-mm, see \lmu@u there).
+% The headline itself stays 17 mm high, which sets where the frame title starts.
+\defbeamertemplate*{headline}{lmu theme}{%
+  \lmu@setunit
+  \vbox to 17mm{%
+    \vskip11.9\lmu@u
+    \hbox{%
+      \hskip63.3\lmu@u
+      \vbox to 23\lmu@u{%
+        \vfil
+        \hbox{%
+          \hskip7.4\lmu@u
+          \usebeamercolor[fg]{section in head/foot}%
+          \usebeamerfont{section in head/foot}%
+          \vphantom{Ag}%
+          \lmu@iftitlepage{}{\insertsection}%
+        }%
+        \vfil
+      }%
+    }%
+    \vss
+  }%
 }
 
+% No footline on the title page (set by the title page template, so a title
+% frame with [noframenumbering] does not hide the footline of the next frame)
 \defbeamertemplate*{footline}{lmu theme}{%
   \leavevmode%
-  \ifnum \theframenumber=1
-        % This is the title frame, no footline
-  \else
+  \lmu@iftitlepage{}{%
   \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.5ex,rightskip=1ex]{author in head/foot}
-    \ifnum\thepage>1\relax%
       \hbox{
         \usebeamerfont{author in head/foot}\insertshortauthor,
         \usebeamerfont{title in head/foot}\insertshorttitle
@@ -29,9 +41,8 @@
           \usebeamertemplate***{navigation symbols}
         } \insertframenumber/\inserttotalframenumber
       }
-    \fi
   \end{beamercolorbox}%
-  \fi
+  }%
   \vskip0pt%
 }
 
