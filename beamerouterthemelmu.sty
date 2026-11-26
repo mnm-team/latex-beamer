@@ -1,5 +1,7 @@
 \mode<presentation>
 
+\RequirePackage{beamerlmucommon}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Head & Foot Lines %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Section name, vertically centred in the wide header box drawn by the
@@ -28,25 +30,38 @@
 }
 
 % No footline on the title page (set by the title page template, so a title
-% frame with [noframenumbering] does not hide the footline of the next frame)
+% frame with [noframenumbering] does not hide the footline of the next frame).
+% Author and title on the left are scaled down if they would not fit next to
+% the navigation symbols and the frame number, so the footline stays one line.
+\newsavebox\lmu@footleft
+\newsavebox\lmu@footright
+\newdimen\lmu@footwidth
 \defbeamertemplate*{footline}{lmu theme}{%
   \leavevmode%
   \lmu@iftitlepage{}{%
-  \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.5ex,rightskip=1ex]{author in head/foot}
-      \hbox{
-        \usebeamerfont{author in head/foot}\insertshortauthor,
-        \usebeamerfont{title in head/foot}\insertshorttitle
-      }\hfill\hbox{
-        \raise-0.6ex\hbox{%
-          \usebeamertemplate***{navigation symbols}
-        } \insertframenumber/\inserttotalframenumber
-      }
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.5ex,rightskip=1ex]{author in head/foot}%
+    \sbox\lmu@footleft{%
+      \usebeamerfont{author in head/foot}\insertshortauthor,
+      \usebeamerfont{title in head/foot}\insertshorttitle}%
+    \sbox\lmu@footright{%
+      \raise-0.6ex\hbox{\usebeamertemplate***{navigation symbols}}%
+      \ \insertframenumber/\inserttotalframenumber}%
+    \lmu@footwidth=\dimexpr\paperwidth-1.5ex-\wd\lmu@footright-1em\relax
+    \ifdim\wd\lmu@footleft>\lmu@footwidth
+      \resizebox{\lmu@footwidth}{!}{\usebox\lmu@footleft}%
+    \else
+      \usebox\lmu@footleft
+    \fi
+    \hfill\usebox\lmu@footright
   \end{beamercolorbox}%
   }%
   \vskip0pt%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sidebars %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Empty sidebar: the navigation symbols are shown in the footline
+\setbeamertemplate{sidebar right}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

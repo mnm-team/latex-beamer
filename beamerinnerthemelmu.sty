@@ -15,15 +15,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Geometry %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Header and title page follow the official LMU PowerPoint template
-% (lmu_ppt_vorlage_20221104.potx, 338.7 x 190.5 mm). All positions below are
-% given in millimetres of that template; \lmu@u is one such millimetre scaled
-% to the paper width (16:9: 160 mm / 338.7 mm = 0.4724). Font sizes are not
-% scaled with the page: they are the template's sizes times 0.4724.
-% Images get both width and height (in their aspect ratio), so that global
-% graphicx defaults such as \setkeys{Gin}{height=\maxheight} cannot shrink them.
-\newdimen\lmu@u
-\def\lmu@setunit{\lmu@u=\dimexpr\paperwidth*10/3387\relax}
+% Header and title page follow the official LMU PowerPoint template; all
+% positions below are given in its millimetres (\lmu@u, see beamerlmucommon).
+% Font sizes are not scaled with the page: they are the template's sizes times
+% 0.4724. Images get both width and height (in their aspect ratio), so that
+% global graphicx defaults such as \setkeys{Gin}{height=\maxheight} cannot
+% shrink them.
+\RequirePackage{beamerlmucommon}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -35,13 +33,15 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Background %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Header: LMU logo block, a wide box (section name, see the headline in the
-% outer theme) and a small box with the logo, all 23 template-mm high.
+% Header: a strip in lmu@background1 as high as the headline (17 mm), with the
+% LMU logo block, a wide box (section name, see the headline in the outer
+% theme) and a small box with the logo, all 23 template-mm high.
 \setbeamertemplate{background}{%
   \lmu@setunit
   \begin{tikzpicture}[x=\lmu@u,y=\lmu@u,line width=0.1mm]
     \useasboundingbox (0pt,0pt) rectangle (\paperwidth,\paperheight);
     \begin{scope}[shift={(0pt,\paperheight)}]
+      \fill[color=lmu@background1] (0pt,-17mm) rectangle (\paperwidth,0pt);
       \node[anchor=north west,inner sep=0] at (12.4,-11.9)
         {\includegraphics[width=48.54\lmu@u,height=23\lmu@u]{lmulogogreen.png}};
       \draw[color=lmu@green] (63.3,-11.9) rectangle (277.7,-34.9);
@@ -53,19 +53,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Part Pages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Page number of the title page; the outer theme hides the section name and the
-% footline there. Set by both title page templates.
-\def\lmu@titlepagenumber{0}
-\def\lmu@marktitlepage{\xdef\lmu@titlepagenumber{\the\c@page}}
-\def\lmu@iftitlepage{%
-  \ifnum\c@page=\lmu@titlepagenumber\relax
-    \expandafter\@firstoftwo
-  \else
-    \expandafter\@secondoftwo
-  \fi}
-
 % Remember the long and the short form of \institute[short]{long}, to show the
-% long form on the title page only if it differs from the short one.
+% short form as a label in the header box only if it was given and differs from
+% the long one. (Without [short], beamer passes the long form as both.)
 \long\def\lmu@longinstitute{}
 \long\def\lmu@shortinstitute{}
 \let\lmu@beamer@institute\beamer@institute
@@ -82,7 +72,7 @@
 
 % Title page after the layout "Präsentationstitel" of the LMU PowerPoint
 % template: green panel on the left with the title at the top and subtitle,
-% author, (long) institute and date at the bottom; the short institute in
+% author, institute and date at the bottom; the short institute (if given) in
 % capitals in the wide header box; the seal cut off at the bottom right.
 \defbeamertemplate{title page}{lmu}{%
   \lmu@marktitlepage
@@ -106,14 +96,19 @@
       {\usebeamerfont{title page info}\lmu@nohyphens
         \ifx\insertsubtitle\@empty\else\insertsubtitle\par\fi
         \ifx\beamer@shortauthor\@empty\else\insertauthor\par\fi
-        \ifx\lmu@longinstitute\lmu@shortinstitute\else
+        \ifx\insertinstitute\@empty\else
           {\usebeamerfont{title page institute}\insertinstitute\par}\fi
         \ifx\insertdate\@empty\else\insertdate\par\fi};
-    \ifx\beamer@shortinstitute\@empty\else
-      \usebeamercolor{title page label}%
-      \node[anchor=south west,inner xsep=2.5\lmu@u,inner ysep=1.3\lmu@u,
-        text=title page label.fg] at ($(current page.north west)+(63.3,-34.9)$)
-        {\usebeamerfont{title page label}\lmu@spaced{\MakeUppercase{\beamer@shortinstitute}}};
+    \ifx\lmu@shortinstitute\lmu@longinstitute\else
+      \lmu@ifblank\lmu@shortinstitute{}{%
+        \usebeamercolor{title page label}%
+        \node[anchor=south west,inner xsep=2.5\lmu@u,inner ysep=1.3\lmu@u,
+          align=left,text=title page label.fg]
+          at ($(current page.north west)+(63.3,-34.9)$)
+          {\usebeamerfont{title page label}%
+            \let\thanks\@gobble\def\inst{\beamer@instother}%
+            \def\and{\beamer@andother}\def\\{\unskip\space}%
+            \lmu@spaced{\MakeUppercase{\lmu@shortinstitute}}};}%
     \fi
   \end{tikzpicture}%
 }
@@ -212,9 +207,6 @@
 %\setbeamertemplate{sections/subsections in toc}[ball]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Navigation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%empty sidebar because we want our navigation symbols to be in the footer
-\setbeamertemplate{sidebar right}{}
 
 % Navigation symbols are off by default. To show them in the footline, use
 % \setbeamertemplate{navigation symbols}[lmu].
@@ -330,17 +322,17 @@
     \usebeamercolor[fg]{section title}
     \usebeamerfont{section title}
     \insertsectionhead\par
-    \ifx\insertsubsectionhead\@empty\else
+    \lmu@ifblank\insertsubsectionhead{}{%
       \usebeamercolor[fg]{subsection title}
       \usebeamerfont{subsection title}
       \insertsubsectionhead
-    \fi
+    }
   \end{center}
 }
 
 % Section page: section number, section title and (if any) subsection title,
 % left-aligned and vertically centred ([c] frame). \sectionpage inserts it, e.g.
-%   \AtBeginSection{\begin{frame}[plain,c]\sectionpage\end{frame}}
+%   \AtBeginSection{\begin{frame}[plain,c,noframenumbering]\sectionpage\end{frame}}
 % The centred page from before is \setbeamertemplate{section page}[simple].
 \defbeamertemplate{section page}{lmu}{%
   \vfill
@@ -352,11 +344,10 @@
     \vspace{2mm}
     {\usebeamercolor[fg]{section title}\usebeamerfont{section title}%
       \insertsectionhead\par}
-    \ifx\insertsubsectionhead\@empty\else
+    \lmu@ifblank\insertsubsectionhead{}{%
       \vspace{3mm}
       {\usebeamercolor[fg]{subsection title}\usebeamerfont{subsection title}%
-        \insertsubsectionhead\par}
-    \fi
+        \insertsubsectionhead\par}}
   \end{minipage}
   \vfill
 }

@@ -42,7 +42,7 @@ theme:
 
 % Section page (number, section, subsection) at the start of each section;
 % the centred page from before is \setbeamertemplate{section page}[simple]
-\AtBeginSection{\begin{frame}[plain,c]\sectionpage\end{frame}}
+\AtBeginSection{\begin{frame}[plain,c,noframenumbering]\sectionpage\end{frame}}
 ```
 
 The LMU colours are available under short names: `lmugreen`, `lmublue`,

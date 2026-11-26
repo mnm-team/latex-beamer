@@ -1,0 +1,36 @@
+% Helpers shared by the LMU inner and outer themes, so that each of them also
+% works on its own (\useinnertheme{lmu} or \useoutertheme{lmu}).
+\ProvidesPackage{beamerlmucommon}
+
+% Header and title page follow the official LMU PowerPoint template
+% (lmu_ppt_vorlage_20221104.potx, 338.7 x 190.5 mm). All positions are given
+% in millimetres of that template; \lmu@u is one such millimetre scaled to the
+% paper width (16:9: 160 mm / 338.7 mm = 0.4724). It is set for the whole
+% document, so that it can also be used outside the theme's templates (e.g. by
+% \insertlogo in a frame).
+\newdimen\lmu@u
+\def\lmu@setunit{\global\lmu@u=\dimexpr\paperwidth*10/3387\relax}
+\AtBeginDocument{\lmu@setunit}
+
+% Page number of the title page; the outer theme hides the section name and the
+% footline there. Set by the title page templates of the inner theme.
+\def\lmu@titlepagenumber{0}
+\def\lmu@marktitlepage{\xdef\lmu@titlepagenumber{\the\c@page}}
+\def\lmu@iftitlepage{%
+  \ifnum\c@page=\lmu@titlepagenumber\relax
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi}
+
+% \lmu@ifblank\macro{true}{false}: true if \macro expands (one step) to
+% nothing. Unlike \ifx\macro\@empty, this also holds for \long or \protected
+% macros, as beamer uses for \insertsubsectionhead after \part.
+\def\lmu@ifblank#1{%
+  \if\relax\detokenize\expandafter{#1}\relax
+    \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi}
+
+\endinput

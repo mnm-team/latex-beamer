@@ -10,6 +10,9 @@
  \RequirePackage[T1]{fontenc}
  \RequirePackage[utf8]{inputenc}
  \RequirePackage{textcomp} % provide euro and other symbols
+ % scalable fonts: the title page uses sizes such as 13.2 pt and 7.56 pt,
+ % which the T1 Computer Modern fonts only offer in fixed steps
+ \RequirePackage{lmodern}
 \else % if luatex or xetex
  \RequirePackage{unicode-math}
  \defaultfontfeatures{Scale=MatchLowercase}

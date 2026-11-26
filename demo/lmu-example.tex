@@ -65,7 +65,7 @@ moredelim=**[il][\only<+>{\color{black}\lstset{style=highlight}}]{@}
 \newcommand{\newauthor}[2]{%
 \begin{tabular}[t]{@{}l@{}}
 {\bfseries #1} \\
-{\scriptsize\mdseries\href{mailto:#2}{#2}}
+{\fontsize{6}{7}\selectfont\mdseries\href{mailto:#2}{#2}}
 \end{tabular}%
 }
 
@@ -170,11 +170,11 @@ moredelim=**[il][\only<+>{\color{black}\lstset{style=highlight}}]{@}
 
 \begin{frame}[fragile]{Customization}
   \begin{block}{Code}
-    \begin{lstlisting}[style=basetex]
+    \begin{lstlisting}[style=basetex,basicstyle=\small\color{black!40}]
 @\logo{\includegraphics[height=5mm]{logo}}
 @\setbeamertemplate{title page}[classic]
 @\setbeamertemplate{navigation symbols}[lmu]
-@\AtBeginSection{\frame[plain,c]{\sectionpage}}
+@\AtBeginSection{\frame[plain,c,noframenumbering]{\sectionpage}}
 \end{lstlisting}
   \end{block}
   \vspace{-1ex}
